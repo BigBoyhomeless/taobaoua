@@ -1,0 +1,254 @@
+<script>
+  try{
+	String.prototype.replaceAll = function (str1,str2){
+	  var str    = this;     
+	  //alert(str1 + ' ===> ' + str2);
+	  var result   = str.replace(eval("/"+str1+"/g"),str2);
+	  return result;
+	}	
+	}catch(e){
+		alert(e.message); 
+		alert(e.description) ;
+		alert(e.number); 
+		alert(e.name); 
+	}
+	
+	var fso, f1, ts, uac;
+	
+	
+	/*
+	var ForReading = 1;
+	fso = new ActiveXObject("Scripting.FileSystemObject");
+	// 创建文件
+	ts = fso.OpenTextFile("e:\\ua\\ua2.js", ForReading);
+	// 读取文件一行内容到字符串
+	uac = ts.ReadAll();
+	// 显示字符串信息
+	//alert("File contents = ‘" + ua + "‘");
+	// 关闭文件
+	ts.Close();
+	*/
+	
+	var uac = "wo = s5('INL1YC2NQ3z', 1, 2) + h6 + s5('iZK|e', 1, 2) + gw;";
+	var ua = uac;
+	
+	
+	var reg = /(xg\([^\)]*\))/g; 
+	var r = ua.match(reg);
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}
+	var reg = /(sy\([^\)]*\))/g; 
+	var r = ua.match(reg);
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}
+	var reg = /(s5\([^\)]*\))/g; 
+	var r = ua.match(reg);
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}
+	
+	var reg = /(xd\([^\)]*\))/g; 
+	var r = ua.match(reg);
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}			
+	
+	
+ 	var reg = /(\(\(0[xX][0-9a-fA-F]+ [\*\&\|\%] [0-9]+\) [\*\&\|\%] [0-9]+\))/g; //双括号 ((0x3f3 % 0360 & 75)
+	var r = ua.match(reg);	
+	
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			//alert(r[i]);
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}	
+	
+	
+	var reg = /(\(0[xX][0-9a-fA-F]+ [\*\&\|\%] [0-9]+ [\*\&\|\%] [0-9]+\))/g;//单括号 (0x3f3 * 0673 & 63)
+	var r = ua.match(reg);	
+	
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			//alert(r[i]);
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}		
+	
+	
+	
+	var reg = /(\(0[xX][0-9a-fA-F]+ [\*\&\|\%] [0-9]+\))/g;//单括号 (0x3e8 % 0144)
+	
+	var r = ua.match(reg);	
+	
+	if(r != null){
+		for(var i = 0; i < r.length; i++){
+			var tt = eval(r[i]);
+			r[i] = str_to_reg(r[i]);
+			ua = ua.replaceAll(r[i],tt);
+		}
+	}	
+	
+	function str_to_reg(str){
+			str = str.replace(/\\/g,'\\\\');
+			str = str.replace(/\'/g,'\\\'');
+			str = str.replace(/\(/g,'\\\(');
+			str = str.replace(/\)/g,'\\\)');		
+			str = str.replace(/\[/g,'\\\[');		
+			str = str.replace(/\]/g,'\\\]');		
+			str = str.replace(/\{/g,'\\\{');		
+			str = str.replace(/\}/g,'\\\}');			
+			str = str.replace(/\-/g,'\\\-');
+			str = str.replace(/\=/g,'\\\=');
+			str = str.replace(/\+/g,'\\\+');
+			str = str.replace(/\//g,'\\\/');
+			str = str.replace(/\|/g,'\\\|');
+			
+			str = str.replace(/\*/g,'\\\*');
+			str = str.replace(/\&/g,'\\\&');
+			str = str.replace(/\%/g,'\\\%');
+			
+			return str;
+	}
+	
+	alert(ua);
+	
+	//writeFile("e:\\ua\\ua2_replace.js", ua);
+	
+	//写文件       
+	function writeFile(filename,filecontent){      
+	    var fso, f, s ;      
+	    fso = new ActiveXObject("Scripting.FileSystemObject");         
+	    f = fso.OpenTextFile(filename,8 ,true);      
+	    f.WriteLine(filecontent);        
+	    f.Close();      
+	}   	
+	
+	function xg(y, ea, az) {
+                var lf = ea + az;
+                var jq = "";
+                var q4 = "";
+                y = y.substr((0x3e8 % 0207 & 65), y.length - (0x3fe * 0441 & 67));
+                var g1 = y.length;
+                for (var em = (0x3e8 * 0144 & 75); em < g1; ++em) {
+                    if (em % lf == lf - (0x3e8 % 01143 & 83)) {
+                        jq = y.substr(em - lf + (0x3e8 % 01267 & 69), lf);
+                        jq = jq.charAt(lf - (0x3e8 % 0441 & 59)) + jq.substr(((0x3e8 | 01116) % 67), lf - (0x3e8 % 01456 & 71)) + jq.charAt((0x3e8 % 0144));
+                        jq = jq.substr(((0x3fe | 0153) % 93), ea);
+                        q4 = q4 + jq;
+                    }
+                }
+                var rf = g1 % lf;
+                if (rf != (0x3e8 % 0360 & 81)) {
+                    jq = y.substr(g1 - rf, g1 - ((0x3e8 | 01152) % 77));
+                    if (jq.length != (0x3e8 % 0277 & 81)) {
+                        jq = jq.charAt(rf - (0x3f3 * 0261 & 65)) + jq.substr((0x3f3 * 0405 & 65), rf - ((0x3e8 | 01366) % 85)) + jq.charAt(((0x3e8 | 0513) % 59));
+                    }
+                    jq = jq.substr((0x3e8 % 0324 & 67), ea);
+                    q4 = q4 + jq;
+                }
+                return q4;
+            };	
+	
+	function sy(y, ea, az) {
+                var lf = ea + az;
+                var jq = "";
+                var q4 = "";
+                y = y.substr((0x3e8 % 0207 & 65), y.length - (0x3fe * 0441 & 67));
+                var g1 = y.length;
+                for (var em = (0x3e8 * 0144 & 75); em < g1; ++em) {
+                    if (em % lf == lf - (0x3e8 % 01143 & 83)) {
+                        jq = y.substr(em - lf + (0x3e8 % 01267 & 69), lf);
+                        jq = jq.charAt(lf - (0x3e8 % 0441 & 59)) + jq.substr(((0x3e8 | 01116) % 67), lf - (0x3e8 % 01456 & 71)) + jq.charAt((0x3e8 % 0144));
+                        jq = jq.substr(((0x3fe | 0153) % 93), ea);
+                        q4 = q4 + jq;
+                    }
+                }
+                var rf = g1 % lf;
+                if (rf != (0x3e8 % 0360 & 81)) {
+                    jq = y.substr(g1 - rf, g1 - ((0x3e8 | 01152) % 77));
+                    if (jq.length != (0x3e8 % 0277 & 81)) {
+                        jq = jq.charAt(rf - (0x3f3 * 0261 & 65)) + jq.substr((0x3f3 * 0405 & 65), rf - ((0x3e8 | 01366) % 85)) + jq.charAt(((0x3e8 | 0513) % 59));
+                    }
+                    jq = jq.substr((0x3e8 % 0324 & 67), ea);
+                    q4 = q4 + jq;
+                }
+                return q4;
+            };	
+	
+	function s5(y, ea, az) {
+                var lf = ea + az;
+                var jq = "";
+                var q4 = "";
+                y = y.substr((0x3e8 % 0207 & 65), y.length - (0x3fe * 0441 & 67));
+                var g1 = y.length;
+                for (var em = (0x3e8 * 0144 & 75); em < g1; ++em) {
+                    if (em % lf == lf - (0x3e8 % 01143 & 83)) {
+                        jq = y.substr(em - lf + (0x3e8 % 01267 & 69), lf);
+                        jq = jq.charAt(lf - (0x3e8 % 0441 & 59)) + jq.substr(((0x3e8 | 01116) % 67), lf - (0x3e8 % 01456 & 71)) + jq.charAt((0x3e8 % 0144));
+                        jq = jq.substr(((0x3fe | 0153) % 93), ea);
+                        q4 = q4 + jq;
+                    }
+                }
+                var rf = g1 % lf;
+                if (rf != (0x3e8 % 0360 & 81)) {
+                    jq = y.substr(g1 - rf, g1 - ((0x3e8 | 01152) % 77));
+                    if (jq.length != (0x3e8 % 0277 & 81)) {
+                        jq = jq.charAt(rf - (0x3f3 * 0261 & 65)) + jq.substr((0x3f3 * 0405 & 65), rf - ((0x3e8 | 01366) % 85)) + jq.charAt(((0x3e8 | 0513) % 59));
+                    }
+                    jq = jq.substr((0x3e8 % 0324 & 67), ea);
+                    q4 = q4 + jq;
+                }
+                return q4;
+            };	
+			
+	function xd(y, ea, az) {
+                var lf = ea + az;
+                var jq = "";
+                var q4 = "";
+                y = y.substr((0x3e8 % 0207 & 65), y.length - (0x3fe * 0441 & 67));
+                var g1 = y.length;
+                for (var em = (0x3e8 * 0144 & 75); em < g1; ++em) {
+                    if (em % lf == lf - (0x3e8 % 01143 & 83)) {
+                        jq = y.substr(em - lf + (0x3e8 % 01267 & 69), lf);
+                        jq = jq.charAt(lf - (0x3e8 % 0441 & 59)) + jq.substr(((0x3e8 | 01116) % 67), lf - (0x3e8 % 01456 & 71)) + jq.charAt((0x3e8 % 0144));
+                        jq = jq.substr(((0x3fe | 0153) % 93), ea);
+                        q4 = q4 + jq;
+                    }
+                }
+                var rf = g1 % lf;
+                if (rf != (0x3e8 % 0360 & 81)) {
+                    jq = y.substr(g1 - rf, g1 - ((0x3e8 | 01152) % 77));
+                    if (jq.length != (0x3e8 % 0277 & 81)) {
+                        jq = jq.charAt(rf - (0x3f3 * 0261 & 65)) + jq.substr((0x3f3 * 0405 & 65), rf - ((0x3e8 | 01366) % 85)) + jq.charAt(((0x3e8 | 0513) % 59));
+                    }
+                    jq = jq.substr((0x3e8 % 0324 & 67), ea);
+                    q4 = q4 + jq;
+                }
+                return q4;
+            };			
+	
+	
+</script>
